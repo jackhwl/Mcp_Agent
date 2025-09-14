@@ -1,0 +1,26 @@
+## setup
+  - pip install uv
+  - install OpenMCP extension
+## MCP 的由来和原理
+  - Funtion Calling 基础概念
+    - OpenAI接口协议下的一环
+    - 允许大模型调用工具，不再只是文字的产生者，也能成为任务的执行者
+    - AI Agent的基础
+    - Function Calling 原理
+        - XML 指令包裹、引导解码器
+    - Function Calling 案例
+      - 天气预报查询
+    - 开发痛点分析
+    - 大量 Agent 框架
+      - Semantic Kernel
+      - AutoGpt
+      - crewAI
+      - LangGraph
+      - smolagents
+      - LangChain
+      - AutoGen
+    - Function Calling 抽象
+      - Tool
+      - Prompt
+      - Resource
+    - MCP Protocol
