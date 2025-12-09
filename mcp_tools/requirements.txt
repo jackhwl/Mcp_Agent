@@ -1,0 +1,30 @@
+# JIRA MCP Server Dependencies
+
+# Core MCP framework
+fastmcp>=0.2.0
+
+# HTTP requests for JIRA API
+requests>=2.31.0
+
+# Logging and utilities
+python-dotenv>=1.0.0
+
+# LangChain dependencies for AI agent
+langchain>=0.1.0
+langchain-openai>=0.1.0
+langchain-community>=0.0.13
+
+# Additional LangChain utilities
+html2text>=2020.1.16
+atlassian-python-api>=3.41.0
+Pillow>=9.0.0
+lxml>=4.9.0
+beautifulsoup4>=4.11.0
+html5lib>=1.1
+cssselect>=1.0.0
+markdown>=3.4.0
+
+# Optional but recommended for development
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.0.0

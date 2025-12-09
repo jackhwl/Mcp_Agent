@@ -1,0 +1,336 @@
+h1. 📋 Jira Ticket Writing Guidelines
+
+{info:title=💡 Quick Reference}
+Use our MCP tools: {{update_ticket}} and {{enhance_ticket_details}} to transform poorly written tickets into well-structured user stories automatically!
+{info}
+
+----
+
+h2. 🎯 What Makes a Good Jira Ticket?
+
+A well-written Jira ticket is:
+* **Clear and Specific** - Anyone can understand what needs to be done
+* **Actionable** - Contains enough detail to start work immediately  
+* **Testable** - Has clear acceptance criteria for validation
+* **Valuable** - Explains the business value and user impact
+* **Properly Categorized** - Has appropriate labels, priority, and assignment
+
+----
+
+h2. 📝 Ticket Anatomy: Required Elements
+
+h3. 1. Summary (Title)
+*Format:* `[Feature Area]: [Action] [What] for [Who/When]`
+
+{panel:title=✅ Good Examples|borderColor=#36B37E}
+* `User Authentication: Implement secure login with MFA for registered users`
+* `Payment Processing: Add credit card validation for checkout flow`
+* `Dashboard: Create analytics widget for admin users`
+* `API: Fix timeout errors in user data retrieval`
+{panel}
+
+{panel:title=❌ Poor Examples|borderColor=#DE350B}
+* `Fix login` _(too vague)_
+* `Users can't do stuff` _(not specific)_
+* `Update the system` _(what update? which system?)_
+* `Bug in dashboard` _(what kind of bug?)_
+{panel}
+
+h3. 2. Description
+Should include:
+* **Context**: Why is this needed?
+* **Current State**: What happens now?
+* **Desired State**: What should happen?
+* **Impact**: Who is affected and how?
+
+h3. 3. User Story Format
+{code:title=User Story Template}
+As a [user type/persona]
+When [trigger/scenario]  
+I want to [goal/action]
+So I can [immediate benefit]
+So that [broader business value]
+{code}
+
+h3. 4. Acceptance Criteria
+{code:title=Acceptance Criteria Template}
+GIVEN [initial context/state]
+WHEN [action/trigger occurs]
+THEN [expected outcome]
+
+Acceptance Criteria:
+- [ ] Specific testable requirement 1
+- [ ] Specific testable requirement 2  
+- [ ] Error handling scenarios
+- [ ] Performance requirements
+- [ ] Security considerations
+{code}
+
+----
+
+h2. 🏆 Complete Example: Before vs After
+
+h3. ❌ BEFORE: Poorly Written Ticket
+
+{panel:title=MSTECH-123: Fix login|borderColor=#DE350B}
+**Summary:** Fix login
+
+**Description:** Users can't login sometimes
+
+**Priority:** Medium
+
+**Assignee:** Unassigned
+
+**Labels:** None
+
+**Acceptance Criteria:** Make login work
+{panel}
+
+h3. ✅ AFTER: Well-Written Ticket  
+
+{panel:title=MSTECH-123: User Authentication: Secure Login with Multi-Factor Authentication|borderColor=#36B37E}
+**Summary:** User Authentication: Secure Login with Multi-Factor Authentication
+
+**Description:** Implement comprehensive user authentication system with enhanced security features and improved user experience. Currently, users experience intermittent login failures and there are security concerns about single-factor authentication.
+
+**User Story:**
+* **As a** registered user accessing the application
+* **When** I am logging into the application from my browser  
+* **I want to** securely authenticate and access my personal dashboard
+* **So I can** safely manage my personal information and account settings
+* **So that** my data remains protected from unauthorized access and I feel confident using the platform
+
+**Acceptance Criteria:**
+```
+GIVEN a registered user with valid credentials
+WHEN they attempt to log in
+THEN they should be able to authenticate successfully
+
+Acceptance Criteria:
+- [ ] User can enter username and password on login form
+- [ ] System validates credentials against secure database  
+- [ ] Multi-factor authentication is enforced for all users
+- [ ] Failed login attempts are logged and rate-limited
+- [ ] Successful login redirects to personalized dashboard
+- [ ] Session management follows security best practices (30min timeout)
+- [ ] Password reset functionality is available via email
+- [ ] Account lockout after 5 failed attempts within 15 minutes
+- [ ] Login works across all supported browsers (Chrome, Firefox, Safari, Edge)
+- [ ] Mobile-responsive login interface
+- [ ] Error messages are user-friendly and don't reveal security details
+```
+
+**Priority:** High (affects user access and security)
+
+**Assignee:** security.team.lead
+
+**Labels:** security, user-experience, authentication, high-priority
+
+**Components:** Frontend, Backend, Security
+
+**Epic:** User Security Enhancement Initiative
+{panel}
+
+----
+
+h2. 🚀 Ticket Enhancement Workflow
+
+h3. Step 1: Identify Enhancement Opportunities
+{warning:title=Red Flags - Needs Enhancement}
+* Summary under 5 words
+* Description under 2 sentences  
+* No acceptance criteria
+* Vague language ("fix", "update", "improve")
+* No assignee or labels
+* Priority not justified
+{warning}
+
+h3. Step 2: Use MCP Enhancement Tools
+
+{code:title=Quick Enhancement with MCP Tools}
+# For complete ticket transformation
+enhance_ticket_details(
+    ticket_key="MSTECH-123",
+    enhanced_summary="User Authentication: Secure Login with MFA",
+    user_persona="registered user accessing the application", 
+    user_scenario="I am logging into the application",
+    user_goal="securely authenticate and access my dashboard",
+    business_value="protect my personal data",
+    outcome_benefit="users feel confident their data is secure",
+    detailed_acceptance_criteria="GIVEN valid credentials WHEN...",
+    add_priority="2",
+    add_labels=["security", "user-experience", "authentication"]
+)
+
+# For specific field updates
+update_ticket(
+    ticket_key="MSTECH-123",
+    summary="Enhanced summary",
+    add_labels=["enhancement-needed"],
+    comment="Ticket enhanced with structured format"
+)
+{code}
+
+----
+
+h2. 📊 Ticket Categories & Templates
+
+h3. 🐛 Bug Report Template
+{code}
+**Summary:** [Component]: [Bug Description] affects [User Impact]
+
+**Steps to Reproduce:**
+1. Navigate to [location]
+2. Perform [action]  
+3. Observe [unexpected behavior]
+
+**Expected Behavior:** [what should happen]
+**Actual Behavior:** [what actually happens]
+**Environment:** [browser, OS, app version]
+**Frequency:** [always/sometimes/once]
+**Workaround:** [if any exists]
+
+**Impact Assessment:**
+- Users Affected: [number/percentage]
+- Business Impact: [revenue/operations/reputation]
+- Severity: [critical/high/medium/low]
+{code}
+
+h3. ✨ Feature Request Template  
+{code}
+**Business Case:** [why is this needed?]
+**User Value:** [what problem does this solve?]
+**Success Metrics:** [how will we measure success?]
+
+**Functional Requirements:**
+- [ ] Requirement 1
+- [ ] Requirement 2
+
+**Non-Functional Requirements:**  
+- [ ] Performance targets
+- [ ] Security considerations
+- [ ] Accessibility standards
+- [ ] Browser compatibility
+
+**Dependencies:** [other tickets, systems, teams]
+**Risk Assessment:** [potential issues, mitigation strategies]
+{code}
+
+h3. 🔧 Technical Task Template
+{code}
+**Technical Objective:** [what technical problem are we solving?]
+**Approach:** [high-level implementation strategy]
+**Definition of Done:** [specific technical outcomes]
+
+**Technical Requirements:**
+- [ ] Code changes required
+- [ ] Database migrations needed  
+- [ ] API changes required
+- [ ] Configuration updates
+- [ ] Documentation updates
+
+**Testing Strategy:**
+- [ ] Unit tests
+- [ ] Integration tests
+- [ ] Performance testing
+- [ ] Security testing
+{code}
+
+----
+
+h2. 🏷️ Labeling & Categorization Best Practices
+
+h3. Essential Labels
+| **Category** | **Labels** | **Purpose** |
+|---|---|---|
+| **Priority** | critical, high-priority, low-priority | Impact urgency |
+| **Type** | bug, feature, enhancement, technical-debt | Work classification |
+| **Domain** | frontend, backend, database, api, security | Technical area |
+| **Team** | team-alpha, team-beta, cross-team | Ownership |
+| **Status** | blocked, needs-review, ready-for-qa | Work state |
+| **Customer** | customer-facing, internal-tool | Impact scope |
+
+h3. Component Assignment
+* **Frontend**: UI/UX changes, client-side logic
+* **Backend**: Server-side logic, business rules  
+* **Database**: Schema changes, data migrations
+* **API**: Integration points, service interfaces
+* **Security**: Authentication, authorization, compliance
+* **DevOps**: Infrastructure, deployment, monitoring
+
+----
+
+h2. ⚡ Quick Quality Checklist
+
+Before submitting any ticket, verify:
+
+{code:title=✅ Quality Checklist}
+□ Summary is descriptive and follows naming convention
+□ Description explains context, current state, and desired outcome  
+□ User story format is complete (As a/When/I want/So I can/So that)
+□ Acceptance criteria are specific and testable
+□ Priority is set and justified
+□ Appropriate labels and components are assigned
+□ Dependencies and blockers are identified
+□ Definition of Done is clear
+□ Assignee or team is identified
+□ Effort estimation is provided (if required)
+{code}
+
+----
+
+h2. 🛠️ Tools & Resources
+
+h3. MCP Jira Enhancement Tools
+* {{get_ticket_details}} - Fetch current ticket information
+* {{update_ticket}} - Update specific fields with user story format
+* {{enhance_ticket_details}} - Complete ticket transformation  
+* {{create_user_story}} - Create new well-structured tickets
+
+h3. Useful JQL Queries for Quality Monitoring
+{code:title=Find Tickets Needing Enhancement}
+# Tickets with poor summaries (too short)
+summary ~ "fix*" OR summary ~ "update*" OR summary ~ "bug*"
+
+# Tickets without acceptance criteria  
+"Acceptance Criteria" is EMPTY
+
+# Unassigned tickets older than 3 days
+assignee is EMPTY AND created <= -3d
+
+# High priority tickets without proper labels
+priority = High AND labels is EMPTY
+{code}
+
+----
+
+h2. 📈 Continuous Improvement
+
+h3. Team Review Process
+1. **Weekly Ticket Quality Review** - Sample 10% of tickets created
+2. **Enhancement Metrics Tracking** - Before/after comparison  
+3. **Team Training Sessions** - Share examples and best practices
+4. **Quality Gates** - Don't move to "In Progress" without acceptance criteria
+
+h3. Success Metrics
+* **Clarity Score**: % of tickets requiring clarification before work starts
+* **Rework Rate**: % of tickets needing significant scope changes  
+* **Cycle Time**: Average time from creation to completion
+* **Customer Satisfaction**: Stakeholder feedback on deliverables
+
+----
+
+{tip:title=💡 Pro Tips}
+* **Use Templates**: Start with our templates and customize for your context
+* **Include Screenshots**: Visual examples clarify requirements quickly  
+* **Link Related Tickets**: Reference dependencies and related work
+* **Update Regularly**: Keep tickets current as understanding evolves
+* **Use MCP Tools**: Leverage automation for consistent enhancement
+{tip}
+
+{info:title=🆘 Need Help?}
+* **For MCP tool usage**: Run {{healthcheck}} and {{test_connection}} to verify setup
+* **For ticket enhancement**: Use {{enhance_ticket_details}} for complete transformation
+* **For team training**: Schedule a session with the Product Management team
+* **For custom templates**: Contact the Jira administrators
+{info} 
