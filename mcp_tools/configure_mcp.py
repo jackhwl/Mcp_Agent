@@ -58,6 +58,7 @@ settings["mcp"]["servers"]["confluence-mcp-server"] = {
     "command": venv_python,
     "args": [confluence_server],
     "env": {
+        "CONFLUENCE_USERNAME": "your-confluence-username",
         "CONFLUENCE_AUTH_TOKEN": "your-secure-auth-token",
         "CONFLUENCE_BASE_URL": "https://wlwiki.wenlin.net/"
     }
